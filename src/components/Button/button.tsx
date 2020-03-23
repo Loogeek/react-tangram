@@ -42,7 +42,7 @@ const Button: FC<ButtonProps> = props => {
 };
 
 Button.defaultProps = {
-  btnType: 'primary',
+  btnType: 'default',
   disabled: false,
 };
 
