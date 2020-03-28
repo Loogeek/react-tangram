@@ -1,22 +1,21 @@
 import React from 'react';
 import './App.css';
-import Button from './components/Button';
+import Menu from './components/Menu/menu';
+import MenuItem from './components/Menu/menuItem';
+import SubMenu from './components/Menu/subMenu';
 import './styles/index.scss';
 
 function App() {
   return (
     <div className="App">
-      <Button btnType="link" href="http://www.baidu.com">
-        link
-      </Button>
-      <Button btnType="danger" target="_blank">
-        link
-      </Button>
-      <Button btnType="primary" onClick={() => alert(1)}>
-        link
-      </Button>
-      <Button btnType="default">link</Button>
-      <Button size="lg">size lg</Button>
+      <Menu onSelect={index => console.log(index)}>
+        <MenuItem>111</MenuItem>
+        <MenuItem disabled={true}>222</MenuItem>
+        <SubMenu title="333">
+          <MenuItem>333-111</MenuItem>
+          <MenuItem disabled>333-222</MenuItem>
+        </SubMenu>
+      </Menu>
     </div>
   );
 }
