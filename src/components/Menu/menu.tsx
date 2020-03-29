@@ -46,7 +46,7 @@ const Menu: React.FC<IMenuProps> = props => {
   };
 
   return (
-    <ul className={classes} style={style}>
+    <ul className={classes} style={style} data-testid="test-menu">
       <MenuContext.Provider value={passedContext}>
         {React.Children.map(children, (child, index) => {
           const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
