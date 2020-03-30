@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 import { IMenuItemProps } from './menuItem';
 import { MenuContext } from './menu';
+import Icon from '../Icon/icon';
 
 export interface ISubMenu {
   title: string;
@@ -49,6 +50,7 @@ const SubMenu: React.FC<ISubMenu> = props => {
     <li className={classes} {...hoverEvents}>
       <div className="submenu-title" {...clickEvent}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon" />
       </div>
       <ul className={classNames('armor-submenu', { 'menu-opened': menuOpen })}>
         {React.Children.map(children, (child, i) => {
