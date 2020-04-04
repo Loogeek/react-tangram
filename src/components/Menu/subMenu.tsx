@@ -1,24 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import classNames from 'classnames';
 import { IMenuItemProps } from './menuItem';
 import { MenuContext } from './menu';
 import Icon from '../Icon/icon';
+import Transition from '../Transition/transition';
 
-export interface ISubMenu {
+export interface ISubMenuProps {
   title: string;
   index?: string;
   className?: string;
 }
 
-const SubMenu: React.FC<ISubMenu> = props => {
+const SubMenu: FC<ISubMenuProps> = props => {
   const { title, index, className, children } = props;
   const context = useContext(MenuContext);
+  const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
+  const isOpend = index && context.mode === 'vertical' ? openedSubMenus.includes(index) : false;
+  const [menuOpen, setMenuOpen] = useState(isOpend);
   const classes = classNames('menu-item submenu-item', className, {
     'is-active': context.index === index,
+    'is-opened': menuOpen,
+    'is-vertical': context.mode === 'vertical',
   });
-  const isOpen =
-    index && context.mode === 'vertical' ? context.defaultOpenSubMenus?.includes(index) : false;
-  const [menuOpen, setMenuOpen] = useState(isOpen);
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setMenuOpen(!menuOpen);
@@ -52,20 +55,26 @@ const SubMenu: React.FC<ISubMenu> = props => {
         {title}
         <Icon icon="angle-down" className="arrow-icon" />
       </div>
-      <ul className={classNames('armor-submenu', { 'menu-opened': menuOpen })}>
-        {React.Children.map(children, (child, i) => {
-          const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
-          const { displayName } = childElement.type;
+      <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
+        <ul
+          className={classNames('armor-submenu', {
+            'menu-opened': menuOpen,
+          })}
+        >
+          {React.Children.map(children, (child, i) => {
+            const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
+            const { displayName } = childElement.type;
 
-          if (displayName === 'MenuItem') {
-            return React.cloneElement(childElement, {
-              index: `${index}-${i}`,
-            });
-          } else {
-            console.warn('Warning: SubMenu has a child which is not MenuItem component');
-          }
-        })}
-      </ul>
+            if (displayName === 'MenuItem') {
+              return React.cloneElement(childElement, {
+                index: `${index}-${i}`,
+              });
+            } else {
+              console.warn('Warning: SubMenu has a child which is not MenuItem component');
+            }
+          })}
+        </ul>
+      </Transition>
     </li>
   );
 };
