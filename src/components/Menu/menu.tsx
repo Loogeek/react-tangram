@@ -23,7 +23,7 @@ export interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 
-const Menu: React.FC<IMenuProps> = props => {
+const Menu: React.FC<IMenuProps> = (props) => {
   const { className, style, children, defaultIndex, onSelect, mode, defaultOpenSubMenus } = props;
   const [currentIndex, setIndex] = useState(defaultIndex);
   const classes = classNames('armor-menu', className, {
@@ -52,9 +52,8 @@ const Menu: React.FC<IMenuProps> = props => {
           const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
 
           if (
-            childElement.type &&
-            (childElement.type.displayName === 'MenuItem' ||
-              childElement.type.displayName === 'SubMenu')
+            childElement.type?.displayName === 'MenuItem' ||
+            childElement.type?.displayName === 'SubMenu'
           ) {
             return React.cloneElement(childElement, {
               index: index.toString(),

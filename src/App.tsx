@@ -1,30 +1,31 @@
 import React from 'react';
 import './App.css';
-import Menu, { IMenuProps } from './components/Menu/menu';
-import MenuItem from './components/Menu/menuItem';
-import SubMenu from './components/Menu/subMenu';
+import Tabs from './components/Tabs/tabs';
+import TabItem from './components/Tabs/tabItem';
+import Icon from './components/Icon/icon';
 import './styles/index.scss';
-
-const props: IMenuProps = {
-  defaultIndex: '0',
-  onSelect: () => {},
-  className: 'test',
-};
 
 function App() {
   return (
     <div className="App">
-      <Menu {...props}>
-        <MenuItem>active</MenuItem>
-        <MenuItem disabled>disabled</MenuItem>
-        <MenuItem>xyz</MenuItem>
-        <SubMenu title="dropdown">
-          <MenuItem>drop1</MenuItem>
-        </SubMenu>
-        <SubMenu title="opened">
-          <MenuItem>opened1</MenuItem>
-        </SubMenu>
-      </Menu>
+      <Tabs>
+        <TabItem label="1111">this is content one</TabItem>
+        <TabItem label="222">this is content two</TabItem>
+      </Tabs>
+
+      <Tabs defaultIndex={1} onSelect={(index) => console.log(index)} type="card">
+        <TabItem
+          label={
+            <>
+              <Icon icon="exclamation-circle" />
+              {'  '}自定义图标
+            </>
+          }
+        >
+          this is content one
+        </TabItem>
+        <TabItem label="222">this is content two</TabItem>
+      </Tabs>
     </div>
   );
 }
