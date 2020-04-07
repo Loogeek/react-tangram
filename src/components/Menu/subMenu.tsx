@@ -11,7 +11,7 @@ export interface ISubMenuProps {
   className?: string;
 }
 
-const SubMenu: FC<ISubMenuProps> = props => {
+const SubMenu: FC<ISubMenuProps> = (props) => {
   const { title, index, className, children } = props;
   const context = useContext(MenuContext);
   const openedSubMenus = context.defaultOpenSubMenus as Array<string>;

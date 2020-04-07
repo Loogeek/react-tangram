@@ -7,8 +7,11 @@ export type ButtonSize = 'lg' | 'sm';
 interface BaseButtonProps {
   children: React.ReactNode;
   className?: string;
+  /**设置 Button 的类型 */
   btnType?: ButtonType;
+  /**设置 Button 的尺寸 */
   size?: ButtonSize;
+  /**设置 Button 的是否禁用 */
   disabled?: boolean;
   href?: string;
 }
@@ -18,7 +21,15 @@ type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
 
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button: FC<ButtonProps> = props => {
+/**
+ * 页面中最常用的的按钮元素，适合于完成特定的交互
+ * ### 引用方法
+ *
+ * ~~~js
+ * import { Button } from 'armor'
+ * ~~~
+ */
+export const Button: FC<ButtonProps> = (props) => {
   const { href, className, btnType, size, disabled, children, ...restProps } = props;
   const classes = classNames('armor-btn', className, {
     [`armor-btn-${size}`]: size,

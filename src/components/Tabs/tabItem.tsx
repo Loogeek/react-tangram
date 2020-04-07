@@ -5,7 +5,7 @@ export interface ITabItemProps {
   disabled?: boolean;
 }
 
-const TabItem: FC<ITabItemProps> = ({ children }) => {
+export const TabItem: FC<ITabItemProps> = ({ children }) => {
   return <div className="armor-tab-panel">{children}</div>;
 };
 

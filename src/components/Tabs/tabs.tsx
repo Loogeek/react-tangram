@@ -26,7 +26,7 @@ export interface ITabsProps {
  * import { Tabs } from 'armor'
  * ~~~
  */
-const Tabs: FC<ITabsProps> = (props) => {
+export const Tabs: FC<ITabsProps> = (props) => {
   const { defaultIndex, style, className, onSelect, type, children } = props;
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
   const classes = classNames('armor-tabs-nav', className, {

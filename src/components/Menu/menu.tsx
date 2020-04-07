@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { FC, FunctionComponentElement, useState, createContext } from 'react';
 import classNames from 'classnames';
 import { IMenuItemProps } from './menuItem';
 
@@ -7,10 +7,13 @@ type MenuMode = 'horizontal' | 'vertical';
 
 export interface IMenuProps {
   className?: string;
+  /**默认 active 的菜单项的索引值 */
   defaultIndex?: string;
+  /**菜单类型 横向或者纵向 */
   mode?: MenuMode;
   style?: React.CSSProperties;
   defaultOpenSubMenus?: string[];
+  /**点击菜单项触发的回掉函数 */
   onSelect?: SelectCallback;
 }
 
@@ -23,7 +26,7 @@ export interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 
-const Menu: React.FC<IMenuProps> = (props) => {
+export const Menu: FC<IMenuProps> = (props) => {
   const { className, style, children, defaultIndex, onSelect, mode, defaultOpenSubMenus } = props;
   const [currentIndex, setIndex] = useState(defaultIndex);
   const classes = classNames('armor-menu', className, {
@@ -49,7 +52,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
     <ul className={classes} style={style} data-testid="test-menu">
       <MenuContext.Provider value={passedContext}>
         {React.Children.map(children, (child, index) => {
-          const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
+          const childElement = child as FunctionComponentElement<IMenuItemProps>;
 
           if (
             childElement.type?.displayName === 'MenuItem' ||
