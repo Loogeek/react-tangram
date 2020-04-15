@@ -5,7 +5,7 @@ import Icon from '../Icon/icon';
 
 type InputSize = 'lg' | 'sm';
 
-interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   disabled?: boolean;
   size?: InputSize;
   icon?: IconProp;
@@ -22,6 +22,19 @@ export const Input: FC<IInputProps> = (props) => {
     'input-group-append': !!append,
     'input-group-prepend': !!prepend,
   });
+
+  const fixControlledValue = (value: any) => {
+    if (typeof value === 'undefined' || value === null) {
+      return '';
+    }
+
+    return value;
+  };
+
+  if ('value' in props) {
+    delete restProps.defaultValue;
+    restProps.value = fixControlledValue(props.value);
+  }
 
   return (
     <div className={classes} style={style}>
