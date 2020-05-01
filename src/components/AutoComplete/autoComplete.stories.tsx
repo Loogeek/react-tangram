@@ -129,7 +129,7 @@ return (
 
 const ajaxComplete = () => {
   const handleFetch = (query: string) => {
-    return fetch(`https://api.github.com/search/users?q=${query}`)
+    return fetch(`https://api.github.com/users/${query}`)
       .then((res) => res.json())
       .then(({ items }) => {
         return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item }));
@@ -159,7 +159,7 @@ const textAjax = `
 ### 示例代码
 ~~~javascript
 const handleFetch = (query: string) => {
-  return fetch('https://api.github.com/search/users?q='+ query)
+  return fetch('https://api.github.com/users/'+ query)
     .then(res => res.json())
     .then(({ items }) => {
       return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item}))
