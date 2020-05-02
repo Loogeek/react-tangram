@@ -1,22 +1,46 @@
-import React, { FC, useRef, ChangeEvent } from 'react';
+import React, { FC, useState, useRef, ChangeEvent } from 'react';
 import axios from 'axios';
+import UploadList from './uploadList';
 
 import Button from '../Button';
 
+export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
+
+export interface IUploadFile {
+  uid: string;
+  size: number;
+  name: string;
+  status?: UploadFileStatus;
+  percent?: number;
+  raw?: File;
+  response?: any;
+  error?: any;
+}
+
 export interface IUploadProps {
   action: string;
-  defaultFileList?: File[];
+  defaultFileList?: IUploadFile[];
   beforeUpload?: (file: File) => boolean | Promise<File>;
   onChange?: (file: File) => void;
-  onRemove?: (file: File) => void;
+  onRemove?: (file: IUploadFile) => void;
   onSuccess?: (data: any, file: File) => void;
   onError?: (err: any, file: File) => void;
   onProgress?: (percentage: number, file: File) => void;
 }
 
 export const Upload: FC<IUploadProps> = (props) => {
-  const { action, beforeUpload, onChange, onSuccess, onError, onProgress } = props;
+  const {
+    action,
+    beforeUpload,
+    onChange,
+    onRemove,
+    onSuccess,
+    onError,
+    onProgress,
+    defaultFileList = [],
+  } = props;
   const inputRef = useRef<HTMLInputElement>(null);
+  const [fileList, setFileList] = useState<IUploadFile[]>(defaultFileList);
 
   const handleUpload = () => {
     inputRef.current?.click();
@@ -32,6 +56,30 @@ export const Upload: FC<IUploadProps> = (props) => {
     if (inputRef.current) {
       inputRef.current.value = '';
     }
+  };
+
+  const handleRemove = (file: IUploadFile) => {
+    setFileList((prevList) => {
+      return prevList.filter((item) => item.uid !== file.uid);
+    });
+    if (onRemove) {
+      onRemove(file);
+    }
+  };
+
+  const updateFileList = (updateFile: IUploadFile, updateObj: Partial<IUploadFile>) => {
+    setFileList((prevList) => {
+      return prevList.map((file) => {
+        if (file.uid === updateFile.uid) {
+          return {
+            ...updateFile,
+            ...updateObj,
+          };
+        } else {
+          return file;
+        }
+      });
+    });
   };
 
   const uploadFiles = (files: FileList) => {
@@ -52,6 +100,19 @@ export const Upload: FC<IUploadProps> = (props) => {
   };
 
   const postFile = (file: File) => {
+    const _file: IUploadFile = {
+      uid: Date.now() + 'upload-file',
+      status: 'ready',
+      name: file.name,
+      size: file.size,
+      percent: 0,
+      raw: file,
+    };
+
+    setFileList((prevList) => {
+      return [_file, ...prevList];
+    });
+
     const formData = new FormData();
     formData.append(file.name, file);
     axios
@@ -60,17 +121,19 @@ export const Upload: FC<IUploadProps> = (props) => {
           'Content-Type': 'multipart/form-data',
         },
         onUploadProgress: (e) => {
-          const percentage = Math.round((e.loaded * 100) / e.total) || 0;
-          if (percentage < 100) {
+          const percent = Math.round((e.loaded * 100) / e.total) || 0;
+          if (percent < 100) {
+            updateFileList(_file, { percent, status: 'uploading' });
             if (onProgress) {
-              onProgress(percentage, file);
+              onProgress(percent, file);
             }
           }
         },
       })
-      .then((data) => {
+      .then((resp) => {
+        updateFileList(_file, { percent: 100, status: 'success', response: resp.data });
         if (onSuccess) {
-          onSuccess(data, file);
+          onSuccess(resp.data, file);
         }
 
         if (onChange) {
@@ -78,6 +141,8 @@ export const Upload: FC<IUploadProps> = (props) => {
         }
       })
       .catch((err) => {
+        updateFileList(_file, { percent: 100, status: 'error', error: err });
+
         if (onError) {
           onError(err, file);
         }
@@ -87,15 +152,21 @@ export const Upload: FC<IUploadProps> = (props) => {
         }
       });
   };
-
+  console.log(fileList);
   return (
     <div className="armor-upload-component">
       <Button onClick={handleUpload} btnType="primary">
         UploadFile
       </Button>
       <input type="file" style={{ display: 'none' }} ref={inputRef} onChange={handleFileChange} />
+
+      <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
   );
+};
+
+Upload.defaultProps = {
+  defaultFileList: [],
 };
 
 export default Upload;
