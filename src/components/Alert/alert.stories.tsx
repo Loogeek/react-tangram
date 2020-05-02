@@ -26,7 +26,7 @@ const descAlert = () => {
     ></Alert>
   );
 };
-storiesOf('第四章作业：Alert', module)
+storiesOf('Alert', module)
   .add('Alert', defaultAlert)
   .add('不同样式的 Alert', stylesAlert)
   .add('添加描述的 Alert', descAlert);

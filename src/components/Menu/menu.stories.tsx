@@ -35,7 +35,7 @@ export const openedMenu = () => (
   </Menu>
 );
 
-storiesOf('第六章：Menu', module)
+storiesOf('Menu', module)
   .add('Menu', defaultMenu)
   .add('纵向的 Menu', clickMenu)
   .add('默认展开的纵向 Menu', openedMenu);

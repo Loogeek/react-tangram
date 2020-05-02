@@ -37,7 +37,7 @@ const customTabs = () => (
     <TabItem label="tab2">this is content two</TabItem>
   </Tabs>
 );
-storiesOf('第六章作业：Tabs', module)
+storiesOf('Tabs', module)
   .add('Tabs', defaultTabs)
   .add('选项卡样式的Tabs', cardTabs)
   .add('自定义选项卡样式', customTabs);

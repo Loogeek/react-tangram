@@ -1,18 +1,42 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import AutoComplete, { DataSourceType } from './autoComplete';
-
+import { AutoComplete, DataSourceType } from './autoComplete';
 interface ILakerPlayerProps {
   value: string;
   number: number;
 }
-
 interface IGithubUserProps {
   login: string;
   url: string;
   avatar_url: string;
 }
+const simpleComplete = () => {
+  const lakers = [
+    'bradley',
+    'pope',
+    'caruso',
+    'cook',
+    'cousins',
+    'james',
+    'AD',
+    'green',
+    'howard',
+    'kuzma',
+    'McGee',
+    'rando',
+  ];
+  const handleFetch = (query: string) => {
+    return lakers.filter((name) => name.includes(query)).map((name) => ({ value: name }));
+  };
+  return (
+    <AutoComplete
+      fetchSuggestions={handleFetch}
+      onSelect={action('selected')}
+      placeholder="输入湖人队球员英文名试试"
+    />
+  );
+};
 
 const textComplete = `
   ~~~javascript
@@ -30,30 +54,6 @@ const textComplete = `
   )
   ~~~
 `;
-
-const lakers = [
-  'bradley',
-  'pope',
-  'caruso',
-  'cook',
-  'cousins',
-  'james',
-  'AD',
-  'green',
-  'howard',
-  'kuzma',
-  'McGee',
-  'rando',
-];
-
-const handleFetchData = (query: string) => {
-  return lakers.filter((item) => item.includes(query)).map((item) => ({ value: item }));
-};
-
-const defaultAutoComplete = () => (
-  <AutoComplete placeholder="漂亮的 Input" fetchSuggestions={handleFetchData} />
-);
-
 const customComplete = () => {
   const lakersWithNumber = [
     { value: 'bradley', number: 11 },
@@ -126,10 +126,9 @@ return (
 )
 ~~~
 `;
-
 const ajaxComplete = () => {
   const handleFetch = (query: string) => {
-    return fetch(`https://api.github.com/users/${query}`)
+    return fetch(`https://api.github.com/search/users?q=${query}`)
       .then((res) => res.json())
       .then(({ items }) => {
         return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item }));
@@ -159,7 +158,7 @@ const textAjax = `
 ### 示例代码
 ~~~javascript
 const handleFetch = (query: string) => {
-  return fetch('https://api.github.com/users/'+ query)
+  return fetch('https://api.github.com/search/users?q='+ query)
     .then(res => res.json())
     .then(({ items }) => {
       return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item}))
@@ -167,7 +166,7 @@ const handleFetch = (query: string) => {
 }
 
 const renderOption = (item: DataSourceType) => {
-  const itemWithGithub = item as DataSourceType<GithubUserProps>
+  const itemWithGithub = item as DataSourceType<IGithubUserProps>
   return (
     <>
       <b>Name: {itemWithGithub.value}</b>
@@ -185,8 +184,7 @@ return (
 )
 ~~~
 `;
-
-storiesOf('第九章：AutoComplete', module)
-  .add('AutoComplte', defaultAutoComplete, { info: { source: false, test: textComplete } })
+storiesOf('AutoComplete', module)
+  .add('AutoComplete', simpleComplete, { info: { source: false, text: textComplete } })
   .add('自定义下拉选项', customComplete, { info: { source: false, text: textCustom } })
   .add('异步请求Github用户名', ajaxComplete, { info: { source: false, text: textAjax } });

@@ -31,7 +31,7 @@ const customIcons = () => (
   </>
 );
 
-storiesOf('第七章：Icon', module)
+storiesOf('Icon', module)
   .add('Icon', defaultIcons)
   .add('不同主题的 Icon', themeIcons)
   .add('更多行为的 Icon', customIcons, {
