@@ -152,7 +152,7 @@ export const Upload: FC<IUploadProps> = (props) => {
         }
       });
   };
-  console.log(fileList);
+
   return (
     <div className="armor-upload-component">
       <Button onClick={handleUpload} btnType="primary">
