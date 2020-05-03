@@ -26,6 +26,12 @@ export interface IUploadProps {
   onSuccess?: (data: any, file: File) => void;
   onError?: (err: any, file: File) => void;
   onProgress?: (percentage: number, file: File) => void;
+  accept?: string;
+  data?: { [key: string]: any };
+  headers?: { [key: string]: any };
+  name?: string;
+  multiple?: boolean;
+  withCredentials?: boolean;
 }
 
 export const Upload: FC<IUploadProps> = (props) => {
@@ -38,6 +44,12 @@ export const Upload: FC<IUploadProps> = (props) => {
     onError,
     onProgress,
     defaultFileList = [],
+    accept,
+    data,
+    headers,
+    name,
+    multiple,
+    withCredentials,
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileList, setFileList] = useState<IUploadFile[]>(defaultFileList);
@@ -114,12 +126,21 @@ export const Upload: FC<IUploadProps> = (props) => {
     });
 
     const formData = new FormData();
-    formData.append(file.name, file);
+    formData.append(name || 'file', file);
+
+    if (data) {
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+    }
+
     axios
       .post(action, formData, {
         headers: {
+          ...headers,
           'Content-Type': 'multipart/form-data',
         },
+        withCredentials,
         onUploadProgress: (e) => {
           const percent = Math.round((e.loaded * 100) / e.total) || 0;
           if (percent < 100) {
@@ -158,7 +179,14 @@ export const Upload: FC<IUploadProps> = (props) => {
       <Button onClick={handleUpload} btnType="primary">
         UploadFile
       </Button>
-      <input type="file" style={{ display: 'none' }} ref={inputRef} onChange={handleFileChange} />
+      <input
+        type="file"
+        style={{ display: 'none' }}
+        ref={inputRef}
+        onChange={handleFileChange}
+        accept={accept}
+        multiple={multiple}
+      />
 
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
