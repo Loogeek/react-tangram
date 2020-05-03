@@ -1,6 +1,7 @@
 import React, { FC, useState, useRef, ChangeEvent } from 'react';
 import axios from 'axios';
 import UploadList from './uploadList';
+import Dragger from './dragger';
 
 import Button from '../Button';
 
@@ -21,6 +22,7 @@ export interface IUploadProps {
   action: string;
   defaultFileList?: IUploadFile[];
   beforeUpload?: (file: File) => boolean | Promise<File>;
+  drag?: boolean;
   onChange?: (file: File) => void;
   onRemove?: (file: IUploadFile) => void;
   onSuccess?: (data: any, file: File) => void;
@@ -50,6 +52,8 @@ export const Upload: FC<IUploadProps> = (props) => {
     name,
     multiple,
     withCredentials,
+    drag,
+    children,
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileList, setFileList] = useState<IUploadFile[]>(defaultFileList);
@@ -176,17 +180,32 @@ export const Upload: FC<IUploadProps> = (props) => {
 
   return (
     <div className="armor-upload-component">
-      <Button onClick={handleUpload} btnType="primary">
-        UploadFile
-      </Button>
-      <input
-        type="file"
-        style={{ display: 'none' }}
-        ref={inputRef}
-        onChange={handleFileChange}
-        accept={accept}
-        multiple={multiple}
-      />
+      <div
+        className="armro-upload-input"
+        onClick={handleUpload}
+        style={{ display: 'inline-block' }}
+      >
+        {drag ? (
+          <Dragger
+            onFile={(files) => {
+              uploadFiles(files);
+            }}
+          >
+            {children}
+          </Dragger>
+        ) : (
+          children
+        )}
+        <input
+          type="file"
+          className="armor-file-input"
+          style={{ display: 'none' }}
+          ref={inputRef}
+          onChange={handleFileChange}
+          accept={accept}
+          multiple={multiple}
+        />
+      </div>
 
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
