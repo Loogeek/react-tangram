@@ -32,7 +32,7 @@ const SimpleUpload = () => {
     >
       <Icon icon="upload" size="5x" theme="secondary" />
       <br />
-      <p>Drag file over to upload</p>
+      <p>Click or drag file to this area to upload</p>
     </Upload>
   );
 };
