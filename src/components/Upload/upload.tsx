@@ -3,8 +3,6 @@ import axios from 'axios';
 import UploadList from './uploadList';
 import Dragger from './dragger';
 
-import Button from '../Button';
-
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
 
 export interface IUploadFile {
