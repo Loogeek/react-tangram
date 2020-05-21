@@ -7,8 +7,8 @@ cache:
 env:
   - CI=true
 script:
-  - yarn run test:nowatch && yarn run lint
-  - yarn run build-storybook
+  - npm run test:nowatch && npm run lint
+  - npm run build-storybook
 deploy:
   provider: pages
   skip_cleanup: true

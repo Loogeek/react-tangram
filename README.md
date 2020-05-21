@@ -9,7 +9,7 @@ react-tangram 使用 React Hooks 和 Typescript
 ```javascript
 npm install react-tangram --save
 or
-yarn add react-tangram
+npm add react-tangram
 ```
 
 ### 使用
@@ -34,11 +34,11 @@ import { Button } from 'react-tangram';
 
 ```bash
 //启动本地环境
-yarn run stroybook
+npm run stroybook
 
 //跑单元测试
-yarn test
+npm test
 
 //build可发布静态文件
-yarn run build
+npm run build
 ```
