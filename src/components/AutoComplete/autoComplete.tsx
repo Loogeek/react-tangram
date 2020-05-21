@@ -38,7 +38,7 @@ export interface IAutoCompleteProps extends Omit<IInputProps, 'onSelect'> {
  * ### 引用方法
  *
  * ~~~js
- * import { AutoComplete } from 'armor'
+ * import { AutoComplete } from 'react-tangram'
  * ~~~
  */
 export const AutoComplete: FC<IAutoCompleteProps> = (props) => {
@@ -140,7 +140,7 @@ export const AutoComplete: FC<IAutoCompleteProps> = (props) => {
           setSuggestions([]);
         }}
       >
-        <ul className="armor-suggestion-list">
+        <ul className="react-tangram-suggestion-list">
           {loading ? (
             <div className="suggstions-loading-icon">
               <Icon icon="spinner" spin />
@@ -165,7 +165,7 @@ export const AutoComplete: FC<IAutoCompleteProps> = (props) => {
   }
 
   return (
-    <div ref={componentRef} className="armor-auto-complete">
+    <div ref={componentRef} className="react-tangram-auto-complete">
       <Input value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} {...restProps} />
       {showSuggestions && renderSuggestions()}
     </div>

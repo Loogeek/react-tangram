@@ -20,10 +20,10 @@ export interface IAlertProps {
   visible?: boolean;
 }
 
-const Alert: FC<IAlertProps> = props => {
+const Alert: FC<IAlertProps> = (props) => {
   const { title, description, onClose, closable, type, className, visible } = props;
-  const classes = classNames('armor-alert', className, {
-    [`armor-alert-${type}`]: type,
+  const classes = classNames('react-tangram-alert', className, {
+    [`react-tangram-alert-${type}`]: type,
   });
   const [isHideAlert, setHideAlert] = useState(visible);
 
@@ -39,11 +39,11 @@ const Alert: FC<IAlertProps> = props => {
       <div className={classes}>
         <p className="bold-title">{title}</p>
         {closable && (
-          <div className="armor-alert-close" onClick={handleClick}>
+          <div className="react-tangram-alert-close" onClick={handleClick}>
             <Icon icon="times" />
           </div>
         )}
-        {description && <p className="armor-alert-desc">{description}</p>}
+        {description && <p className="react-tangram-alert-desc">{description}</p>}
       </div>
     </Transition>
   );

@@ -29,7 +29,7 @@ export const MenuContext = createContext<IMenuContext>({ index: '0' });
 export const Menu: FC<IMenuProps> = (props) => {
   const { className, style, children, defaultIndex, onSelect, mode, defaultOpenSubMenus } = props;
   const [currentIndex, setIndex] = useState(defaultIndex);
-  const classes = classNames('armor-menu', className, {
+  const classes = classNames('react-tangram-menu', className, {
     'menu-horizontal': mode === 'horizontal',
     'menu-vertical': mode === 'vertical',
   });

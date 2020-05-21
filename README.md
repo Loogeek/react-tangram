@@ -1,24 +1,24 @@
-## Armor Component Library
+## React-tangram Component Library
 
 ## 使用 React+Typescript 构建基础组件库
 
-armor 使用 React Hooks 和 Typescript
+react-tangram 使用 React Hooks 和 Typescript
 
 ### 安装
 
 ```javascript
-npm install armor --save
+npm install react-tangram --save
 or
-yarn add armor
+yarn add react-tangram
 ```
 
 ### 使用
 
 ```javascript
 // 加载样式
-import 'armor/dist/index.css';
+import 'react-tangram/dist/index.css';
 // 引入组件
-import { Button } from 'armor';
+import { Button } from 'react-tangram';
 ```
 
 ### 课程亮点
@@ -30,9 +30,7 @@ import { Button } from 'armor';
 - 📦 使用第三方库扩充组件-(react-fontawesome, react-transition-group)
 - 🌹 样式使用（Sass）
 
-### 一些本地开发命
-
-令
+### 一些本地开发命令
 
 ```bash
 //启动本地环境

@@ -13,9 +13,12 @@ const Progress: FC<IProgressProps> = (props) => {
   const { percent, strokeHeight, showText, styles, theme } = props;
 
   return (
-    <div className="armor-progress-bar" style={styles}>
-      <div className="armor-progress-bar-outer" style={{ height: `${strokeHeight}px` }}>
-        <div className={`armor-progress-bar-inner color-${theme}`} style={{ width: `${percent}%` }}>
+    <div className="react-tangram-progress-bar" style={styles}>
+      <div className="react-tangram-progress-bar-outer" style={{ height: `${strokeHeight}px` }}>
+        <div
+          className={`react-tangram-progress-bar-inner color-${theme}`}
+          style={{ width: `${percent}%` }}
+        >
           {showText && <span className="inner-text">{`${percent}%`}</span>}
         </div>
       </div>

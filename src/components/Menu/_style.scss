@@ -1,4 +1,4 @@
-.armor-menu {
+.react-tangram-menu {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -51,7 +51,7 @@
       transform: rotate(180deg) !important;
     }
   }
-  .armor-submenu {
+  .react-tangram-submenu {
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -71,7 +71,7 @@
   > .menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
   }
-  .armor-submenu {
+  .react-tangram-submenu {
     position: absolute;
     background: $white;
     z-index: 100;

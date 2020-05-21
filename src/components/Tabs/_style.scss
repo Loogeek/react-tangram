@@ -1,4 +1,4 @@
-.armor-tabs-nav {
+.react-tangram-tabs-nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -7,7 +7,7 @@
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 }
 
-.armor-tabs-nav-item {
+.react-tangram-tabs-nav-item {
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
   cursor: pointer;
@@ -29,7 +29,7 @@
 }
 
 .nav-line {
-  .armor-tabs-nav-item {
+  .react-tangram-tabs-nav-item {
     &.is-active {
       border-bottom: $nav-tabs-border-width * 2 solid $nav-tabs-link-active-color;
     }
@@ -37,7 +37,7 @@
 }
 
 .nav-card {
-  .armor-tabs-nav-item {
+  .react-tangram-tabs-nav-item {
     border: $nav-tabs-border-width solid transparent;
     margin-bottom: -$nav-tabs-border-width;
     &.is-active {
@@ -48,6 +48,6 @@
   }
 }
 
-.armor-tabs-content {
+.react-tangram-tabs-content {
   margin-top: $nav-tabs-content-margin;
 }

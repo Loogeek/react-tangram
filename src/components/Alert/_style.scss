@@ -5,7 +5,7 @@ $alert-colors: (
   'danger': $danger,
 );
 
-.armor-alert {
+.react-tangram-alert {
   position: relative;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
@@ -32,7 +32,7 @@ $alert-colors: (
 }
 
 @each $color, $value in $alert-colors {
-  .armor-alert-#{$color} {
+  .react-tangram-alert-#{$color} {
     @include alert-style($value, darken($value, 5%), $white);
   }
 }

@@ -23,13 +23,13 @@ export interface ITabsProps {
  * ### 引用方法
  *
  * ~~~js
- * import { Tabs } from 'armor'
+ * import { Tabs } from 'react-tangram'
  * ~~~
  */
 export const Tabs: FC<ITabsProps> = (props) => {
   const { defaultIndex, style, className, onSelect, type, children } = props;
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
-  const classes = classNames('armor-tabs-nav', className, {
+  const classes = classNames('react-tangram-tabs-nav', className, {
     'nav-line': type === 'line',
     'nav-card': type === 'card',
   });
@@ -48,7 +48,7 @@ export const Tabs: FC<ITabsProps> = (props) => {
       const childElement = child as FunctionComponentElement<ITabItemProps>;
       if (childElement.type?.displayName === 'TabItem') {
         const { label, disabled = false } = childElement.props;
-        const classes = classNames('armor-tabs-nav-item', {
+        const classes = classNames('react-tangram-tabs-nav-item', {
           disabled: disabled,
           'is-active': activeIndex === index,
         });
@@ -79,11 +79,11 @@ export const Tabs: FC<ITabsProps> = (props) => {
   }
 
   return (
-    <div className="armor-tabs">
+    <div className="react-tangram-tabs">
       <ul className={classes} style={style}>
         {renderTab()}
       </ul>
-      <div className="armor-tabs-content">{renderContent()}</div>
+      <div className="react-tangram-tabs-content">{renderContent()}</div>
     </div>
   );
 };

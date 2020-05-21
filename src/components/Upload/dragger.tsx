@@ -8,7 +8,7 @@ export interface IDraggerProps {
 export const Dragger: FC<IDraggerProps> = (props) => {
   const { onFile, children } = props;
   const [dragOver, setDragOver] = useState(false);
-  const classes = classNames('armor-uploader-dragger', {
+  const classes = classNames('react-tangram-uploader-dragger', {
     'is-dragover': dragOver,
   });
 

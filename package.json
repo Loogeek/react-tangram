@@ -1,5 +1,5 @@
 {
-  "name": "armor",
+  "name": "react-tangram",
   "version": "0.1.3",
   "description": "Use ts and React Hooks to build component library",
   "author": "Loogeek",
@@ -13,7 +13,7 @@
     "React Hooks",
     "Components"
   ],
-  "homepage": "https://github/com/loogeek/armor",
+  "homepage": "https://github.com/loogeek/react-tangram",
   "files": [
     "dist"
   ],

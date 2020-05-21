@@ -22,7 +22,7 @@ describe('test Button component', () => {
     const element = wrapper.getByText('Nice') as HTMLButtonElement;
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('BUTTON');
-    expect(element).toHaveClass('armor-btn armor-btn-default');
+    expect(element).toHaveClass('react-tangram-btn react-tangram-btn-default');
     expect(element.disabled).toBeFalsy();
     fireEvent.click(element);
     expect(defaultProps.onClick).toHaveBeenCalled();
@@ -32,7 +32,7 @@ describe('test Button component', () => {
     const wrapper = render(<Button {...testProps}>Nice</Button>);
     const element = wrapper.getByText('Nice');
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass('armor-btn-primary armor-btn-lg klass');
+    expect(element).toHaveClass('react-tangram-btn-primary react-tangram-btn-lg klass');
   });
 
   it('should render a link when btnType equals link and href is provided', () => {
@@ -44,7 +44,7 @@ describe('test Button component', () => {
     const element = wrapper.getByText('Link');
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('A');
-    expect(element).toHaveClass('armor-btn armor-btn-link');
+    expect(element).toHaveClass('react-tangram-btn react-tangram-btn-link');
   });
 
   it('should render disabled button when disabled set to true', () => {

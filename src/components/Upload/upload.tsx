@@ -179,7 +179,7 @@ export const Upload: FC<IUploadProps> = (props) => {
   };
 
   return (
-    <div className="armor-upload-component">
+    <div className="react-tangram-upload-component">
       <div
         className="armro-upload-input"
         onClick={handleUpload}
@@ -198,7 +198,7 @@ export const Upload: FC<IUploadProps> = (props) => {
         )}
         <input
           type="file"
-          className="armor-file-input"
+          className="react-tangram-file-input"
           style={{ display: 'none' }}
           ref={inputRef}
           onChange={handleFileChange}

@@ -26,7 +26,9 @@ describe('test Alert Component', () => {
   it('should render the correct default Alert', () => {
     const { getByText, container, queryByText } = render(<Alert {...testProps} />);
     expect(queryByText('title')).toBeInTheDocument();
-    expect(container.querySelector('.armor-alert')).toHaveClass('armor-alert-default');
+    expect(container.querySelector('.react-tangram-alert')).toHaveClass(
+      'react-tangram-alert-default'
+    );
     fireEvent.click(getByText('times'));
     expect(testProps.onClose).toHaveBeenCalled();
     expect(queryByText('title')).not.toBeInTheDocument();
@@ -34,7 +36,9 @@ describe('test Alert Component', () => {
   it('should render the correct Alert based on different type and description', () => {
     const { container, queryByText } = render(<Alert {...typeProps} />);
     expect(queryByText('title')).toHaveClass('bold-title');
-    expect(container.querySelector('.armor-alert')).toHaveClass('armor-alert-success');
+    expect(container.querySelector('.react-tangram-alert')).toHaveClass(
+      'react-tangram-alert-success'
+    );
     expect(queryByText('hello')).toBeInTheDocument();
     expect(queryByText('times')).not.toBeInTheDocument();
   });

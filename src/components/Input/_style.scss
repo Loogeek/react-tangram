@@ -1,4 +1,4 @@
-.armor-input-wrapper {
+.react-tangram-input-wrapper {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
 
-    & + .armor-input-inner {
+    & + .react-tangram-input-inner {
       padding-right: 35px;
     }
     svg {
@@ -22,7 +22,7 @@
     }
   }
 
-  .armor-input-inner {
+  .react-tangram-input-inner {
     width: 100%;
     padding: $input-padding-y $input-padding-x;
     font-family: $input-font-family;
@@ -62,21 +62,21 @@
     }
   }
 
-  &.input-size-sm .armor-input-inner {
+  &.input-size-sm .react-tangram-input-inner {
     padding: $input-padding-y-sm $input-padding-x-sm;
     font-size: $input-font-size-sm;
     border-radius: $input-border-radius-sm;
   }
 
-  &.input-size-lg .armor-input-inner {
+  &.input-size-lg .react-tangram-input-inner {
     padding: $input-padding-y-lg $input-padding-x-lg;
     font-size: $input-font-size-lg;
     border-radius: $input-border-radius-lg;
   }
 
   &.input-group {
-    .armor-input-group-prepend,
-    .armor-input-group-append {
+    .react-tangram-input-group-prepend,
+    .react-tangram-input-group-append {
       display: flex;
       align-items: center;
       padding: $input-padding-y $input-padding-x;
@@ -97,13 +97,13 @@
       }
     }
 
-    .armor-input-group-append,
-    &.input-group-prepend > .armor-input-inner {
+    .react-tangram-input-group-append,
+    &.input-group-prepend > .react-tangram-input-inner {
       @include border-left-radius(0);
     }
 
-    .armor-input-group-prepend,
-    &.input-group-append > .armor-input-inner {
+    .react-tangram-input-group-prepend,
+    &.input-group-append > .react-tangram-input-inner {
       @include border-right-radius(0);
     }
   }

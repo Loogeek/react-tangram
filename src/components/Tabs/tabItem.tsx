@@ -6,7 +6,7 @@ export interface ITabItemProps {
 }
 
 export const TabItem: FC<ITabItemProps> = ({ children }) => {
-  return <div className="armor-tab-panel">{children}</div>;
+  return <div className="react-tangram-tab-panel">{children}</div>;
 };
 
 TabItem.displayName = 'TabItem';

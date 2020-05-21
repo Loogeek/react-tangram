@@ -57,7 +57,7 @@ const SubMenu: FC<ISubMenuProps> = (props) => {
       </div>
       <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
         <ul
-          className={classNames('armor-submenu', {
+          className={classNames('react-tangram-submenu', {
             'menu-opened': menuOpen,
           })}
         >

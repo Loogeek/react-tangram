@@ -26,14 +26,14 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
  * ### 引用方法
  *
  * ~~~js
- * import { Button } from 'armor'
+ * import { Button } from 'react-tangram'
  * ~~~
  */
 export const Button: FC<ButtonProps> = (props) => {
   const { href, className, btnType, size, disabled, children, ...restProps } = props;
-  const classes = classNames('armor-btn', className, {
-    [`armor-btn-${size}`]: size,
-    [`armor-btn-${btnType}`]: btnType,
+  const classes = classNames('react-tangram-btn', className, {
+    [`react-tangram-btn-${size}`]: size,
+    [`react-tangram-btn-${btnType}`]: btnType,
     disabled: btnType === 'link' && disabled,
   });
 

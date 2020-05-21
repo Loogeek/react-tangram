@@ -11,9 +11,9 @@ interface IUploadListProps {
 export const UploadList: FC<IUploadListProps> = (props) => {
   const { fileList, onRemove } = props;
   return (
-    <ul className="armor-upload-list">
+    <ul className="react-tangram-upload-list">
       {fileList.map((item) => (
-        <li className="armor-upload-list-item" key={item.uid}>
+        <li className="react-tangram-upload-list-item" key={item.uid}>
           <span className={`file-name file-name-${item.status}`}>
             <Icon icon="file-alt" theme="secondary" />
             {item.name}

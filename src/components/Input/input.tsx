@@ -15,7 +15,7 @@ export interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>,
 
 export const Input: FC<IInputProps> = (props) => {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
-  const classes = classNames('armor-input-wrapper', {
+  const classes = classNames('react-tangram-input-wrapper', {
     'is-disabled': disabled,
     [`input-size-${size}`]: size,
     'input-group': !!append || !!prepend,
@@ -38,14 +38,14 @@ export const Input: FC<IInputProps> = (props) => {
 
   return (
     <div className={classes} style={style}>
-      {prepend && <div className="armor-input-group-prepend">{prepend}</div>}
+      {prepend && <div className="react-tangram-input-group-prepend">{prepend}</div>}
       {icon && (
         <div className="icon-wrapper">
           <Icon icon={icon} />
         </div>
       )}
-      <input className="armor-input-inner" disabled={disabled} {...restProps} />
-      {append && <div className="armor-input-group-append">{append}</div>}
+      <input className="react-tangram-input-inner" disabled={disabled} {...restProps} />
+      {append && <div className="react-tangram-input-group-append">{append}</div>}
     </div>
   );
 };

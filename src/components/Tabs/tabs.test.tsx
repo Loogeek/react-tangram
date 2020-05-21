@@ -28,7 +28,7 @@ describe('test Tabs Component', () => {
 
   it('should render the correct default Tabs', () => {
     const { queryByText, container } = wrapper;
-    expect(container.querySelector('.armor-tabs-nav')).toHaveClass('nav-line');
+    expect(container.querySelector('.react-tangram-tabs-nav')).toHaveClass('nav-line');
     const activeElement = queryByText('tab2');
     expect(activeElement).toBeInTheDocument();
     expect(activeElement).toHaveClass('is-active');

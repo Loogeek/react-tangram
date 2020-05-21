@@ -1,4 +1,4 @@
-.armor-btn {
+.react-tangram-btn {
   position: relative;
   display: inline-block;
   font-weight: $btn-font-weight;
@@ -24,7 +24,7 @@
   }
 }
 
-.armor-btn-lg {
+.react-tangram-btn-lg {
   @include button-size(
     $btn-padding-y-lg,
     $btn-padding-x-lg,
@@ -32,7 +32,7 @@
     $btn-border-radius-lg
   );
 }
-.armor-btn-sm {
+.react-tangram-btn-sm {
   @include button-size(
     $btn-padding-y-sm,
     $btn-padding-x-sm,
@@ -41,18 +41,18 @@
   );
 }
 
-.armor-btn-primary {
+.react-tangram-btn-primary {
   @include button-style($primary, $primary, $white);
 }
-.armor-btn-danger {
+.react-tangram-btn-danger {
   @include button-style($danger, $danger, $white);
 }
 
-.armor-btn-default {
+.react-tangram-btn-default {
   @include button-style($white, $gray-400, $body-color, $white, $primary, $primary);
 }
 
-.armor-btn-link {
+.react-tangram-btn-link {
   font-weight: $font-weight-normal;
   color: $btn-link-color;
   text-decoration: $link-decoration;

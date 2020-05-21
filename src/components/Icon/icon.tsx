@@ -29,12 +29,12 @@ export interface IIconProps extends FontAwesomeIconProps {
  * ### 引用方法
  *
  * ~~~js
- * import { Icon } from 'armor'
+ * import { Icon } from 'react-tangram'
  * ~~~
  */
 export const Icon: FC<IIconProps> = (props) => {
   const { className, theme, ...restProps } = props;
-  const classes = classNames('armor-icon', className, {
+  const classes = classNames('react-tangram-icon', className, {
     [`icon-${theme}`]: theme,
   });
 
