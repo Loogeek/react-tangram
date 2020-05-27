@@ -26,7 +26,7 @@ export const Dragger: FC<IDraggerProps> = (props) => {
   return (
     <div
       className={classes}
-      onDrag={handleDrop}
+      onDrop={handleDrop}
       onDragOver={(e) => {
         handleDrag(e, true);
       }}

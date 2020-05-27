@@ -10,6 +10,7 @@ interface IUploadListProps {
 
 export const UploadList: FC<IUploadListProps> = (props) => {
   const { fileList, onRemove } = props;
+  console.log(1111, fileList[0]?.status);
   return (
     <ul className="react-tangram-upload-list">
       {fileList.map((item) => (
@@ -19,7 +20,9 @@ export const UploadList: FC<IUploadListProps> = (props) => {
             {item.name}
           </span>
           <span className="file-status">
-            {item.status === 'uploading' && <Icon icon="spinner" spin theme="primary" />}
+            {(item.status === 'uploading' || item.status === 'ready') && (
+              <Icon icon="spinner" spin theme="primary" />
+            )}
             {item.status === 'success' && <Icon icon="check-circle" theme="success" />}
             {item.status === 'error' && <Icon icon="times-circle" theme="danger" />}
           </span>
