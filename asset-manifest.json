@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/loogeek/react-tangram/static/css/main.11423d81.chunk.css",
+    "main.js": "/loogeek/react-tangram/main.2de846d26449ab1c0d1c.bundle.js",
+    "main.css.map": "/loogeek/react-tangram/static/css/main.11423d81.chunk.css.map",
+    "main.js.map": "/loogeek/react-tangram/main.2de846d26449ab1c0d1c.bundle.js.map",
+    "runtime~main.js": "/loogeek/react-tangram/runtime~main.2de846d26449ab1c0d1c.bundle.js",
+    "runtime~main.js.map": "/loogeek/react-tangram/runtime~main.2de846d26449ab1c0d1c.bundle.js.map",
+    "vendors~main.css": "/loogeek/react-tangram/static/css/vendors~main.f8f248a5.chunk.css",
+    "vendors~main.js": "/loogeek/react-tangram/vendors~main.2de846d26449ab1c0d1c.bundle.js",
+    "vendors~main.css.map": "/loogeek/react-tangram/static/css/vendors~main.f8f248a5.chunk.css.map",
+    "vendors~main.js.map": "/loogeek/react-tangram/vendors~main.2de846d26449ab1c0d1c.bundle.js.map",
+    "iframe.html": "/loogeek/react-tangram/iframe.html",
+    "precache-manifest.fae3b4fe42c6b0f3ae4e9d9a6c068038.js": "/loogeek/react-tangram/precache-manifest.fae3b4fe42c6b0f3ae4e9d9a6c068038.js",
+    "service-worker.js": "/loogeek/react-tangram/service-worker.js",
+    "vendors~main.2de846d26449ab1c0d1c.bundle.js.LICENSE.txt": "/loogeek/react-tangram/vendors~main.2de846d26449ab1c0d1c.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.2de846d26449ab1c0d1c.bundle.js",
+    "static/css/vendors~main.f8f248a5.chunk.css",
+    "vendors~main.2de846d26449ab1c0d1c.bundle.js",
+    "static/css/main.11423d81.chunk.css",
+    "main.2de846d26449ab1c0d1c.bundle.js"
+  ]
+}
